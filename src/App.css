@@ -1,0 +1,645 @@
+@import url("https://fonts.googleapis.com/css2?family=Patua+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mate+SC&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+/* ============================================================================ */
+/* Variables  */
+
+:root {
+    --background-color: #f4d29c;
+    --header-shadow-color: #43261e;
+    --main-brown: #b1624d;
+    --main-blue: #3d405b;
+    --light-blue: #55597e;
+    --max-width: 1000px;
+}
+
+/* ============================================================================ */
+/* Universal Elements */
+
+.sections-header {
+    font-family: "Mate SC";
+    font-size: clamp(2.5rem, 3vw, 3.5rem);
+    color: #b1624d;
+    margin-top: 0.5em;
+    border-bottom: solid 1px #b1624d;
+    text-align: center;
+}
+
+.button-section {
+    width: 85%;
+    margin: 1em auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    width: 30%;
+    max-width: 200px;
+    min-height: 40px;
+    background-color: #874f54;
+    color: white;
+    border: none;
+    border-radius: 1em;
+    font-family: "Patua One";
+    font-size: clamp(0.8em, 2vw, 1em);
+    transition: color 250ms ease;
+    margin: 0 1em 0 1em;
+}
+
+.menu-section {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1em;
+    background-color: #3d405b;
+}
+
+.menu-part {
+    width: 11%;
+    height: 40px;
+    background-color: var(--main-blue);
+    z-index: 2;
+    display: grid;
+}
+
+.menu-button {
+    height: 50px;
+    background-color: var(--main-blue);
+    color: white;
+    border: none;
+    font-family: "Patua One";
+    font-size: clamp(0.8em, 2vw, 1.1em);
+    transition: color 250ms ease;
+    position: relative;
+}
+
+.item {
+    border: none;
+    border-top: solid 1px white;
+    height: 40px;
+    background-color: var(--main-blue);
+    color: white;
+    font-family: "Patua One";
+    font-size: clamp(0.7em, 2vw, 0.9em);
+    transition: color 250ms ease;
+}
+
+.small-menu-button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 5.5%;
+    top: 3.5%;
+}
+
+.small-menu {
+    background-color: #4d9cb1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.small-menu-part {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    margin: 0 auto 2em auto;
+}
+
+.small-menu-header {
+    font-family: "Patua One";
+    font-size: 1.3em;
+    text-align: center;
+    grid-column: 1 / -1;
+    border-bottom: 1px solid black;
+}
+
+.small-menu-item {
+    font-family: "Patua One";
+    margin: 0.5em;
+    border: none;
+    background-color: var(--main-blue);
+    color: white;
+    padding: 0.5em;
+    max-height: 3em;
+}
+
+.small-menu-item-selected {
+    font-family: "Patua One";
+    margin: 0.5em;
+    border: none;
+    background-color: var(--main-blue);
+    color: var(--main-brown);
+    padding: 0.5em;
+    max-height: 3em;
+}
+
+.button:disabled {
+    background-color: grey;
+}
+
+.button:disabled:hover {
+    color: white;
+}
+
+.button:hover,
+.menu-button:hover,
+.item:hover {
+    color: black;
+}
+
+.arrow {
+    height: 0;
+    width: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid white;
+    position: absolute;
+    transition: transform 300ms ease;
+    right: -5px;
+    top: 42%;
+}
+
+/* ============================================================================ */
+/* Main Menu  */
+
+html {
+    background-color: var(--background-color);
+}
+
+body {
+    margin: 0 auto;
+    max-width: var(--max-width);
+}
+
+.header {
+    font-family: "Mate SC";
+    font-size: clamp(1.9rem, 5vw, 3rem);
+    text-align: center;
+    color: var(--main-brown);
+    border-bottom: solid 2px var(--main-brown);
+    margin: 0.5em 0.5em 0.7em 0.5em;
+    text-shadow: 1px 1px var(--header-shadow-color);
+}
+
+.app-selection {
+    position: relative;
+}
+
+.selector {
+    width: 85%;
+    background-color: var(--main-blue);
+    color: white;
+    border: solid 2px var(--main-blue);
+    text-align: center;
+    transition: all 255ms ease;
+    padding: 1em 1em 2em 1em;
+    margin: 0 auto;
+}
+
+.selector:hover {
+    border: solid 2px white;
+    box-shadow: 0px 0px 0px 5px var(--main-brown);
+}
+
+.selector-label {
+    font-size: clamp(1.3em, 3vw, 2em);
+    font-family: "Patua One", monospace;
+}
+
+.selector-description {
+    font-size: clamp(1em, 2vw, 1.3em);
+    padding-left: 1em;
+    padding-right: 1em;
+    font-family: "Quicksand", sans-serif;
+}
+
+.image {
+    width: 90%;
+    height: auto;
+    max-width: 300px;
+    margin: auto;
+}
+
+.left-selector {
+    height: 0;
+    width: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-right: 30px solid var(--main-brown);
+    position: absolute;
+    transition: all 300ms ease;
+    left: 0.5em;
+    top: 10em;
+}
+
+.right-selector {
+    height: 0;
+    width: 0;
+    border-top: 30px solid transparent;
+    border-bottom: 30px solid transparent;
+    border-left: 30px solid var(--main-brown);
+    position: absolute;
+    transition: all 300ms ease;
+    right: 0.5em;
+    top: 10em;
+}
+
+.left-selector:hover {
+    border-right: 30px solid white;
+}
+
+.right-selector:hover {
+    border-left: 30px solid white;
+}
+
+.indicator-section {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}
+
+.indicator {
+    height: 10px;
+    width: 12vw;
+    max-width: 10em;
+}
+
+@media (min-width: 550px) {
+    .selector {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: center;
+    }
+
+    .selector-label {
+        grid-column: 1 / -1;
+    }
+}
+
+/* ============================================================================ */
+/* Pathfinder Layout */
+
+.pathfinder {
+    width: 90%;
+    margin: 0 auto;
+    min-width: 300px;
+}
+
+.grid-pathfinder {
+    line-height: 0;
+    border: solid 2px #3d405b;
+    margin: 0 auto;
+}
+
+.pathfinder-container {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    background-color: white;
+    border: solid 0.5px white;
+}
+
+.plain:hover {
+    background-color: rgb(24, 156, 179);
+}
+
+.node {
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.dest {
+    background-color: #1eac9e;
+    border-radius: 25%;
+    height: 80%;
+    width: 80%;
+}
+
+.start {
+    background-color: #9e1eac;
+    border-radius: 25%;
+    height: 80%;
+    width: 80%;
+}
+
+.inter-dest {
+    background-color: orange;
+    border-radius: 25%;
+    height: 80%;
+    width: 80%;
+}
+
+.visited {
+    background-color: rgb(81, 215, 134);
+    animation-name: expanding;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+.visited-f {
+    background-color: rgb(81, 215, 134);
+}
+
+.visited-2 {
+    background-color: rgb(148, 81, 215);
+    animation-name: expanding-2;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+.visited-2-f {
+    background-color: rgb(148, 81, 215);
+}
+
+@keyframes expanding {
+    0% {
+        width: 10%;
+        height: 10%;
+        border-radius: 50%;
+        background-color: #9e1eac;
+    }
+    30% {
+        background-color: #ca35da;
+    }
+    70% {
+        border-radius: 40%;
+        background-color: #1eac9e;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        background-color: #1eac57;
+    }
+}
+
+@keyframes expanding-2 {
+    0% {
+        width: 10%;
+        height: 10%;
+        border-radius: 50%;
+        background-color: #ac601e;
+    }
+    30% {
+        background-color: #e6822a;
+    }
+    70% {
+        border-radius: 40%;
+        background-color: #311eac;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        background-color: #523ed5;
+    }
+}
+
+.marked {
+    background-color: rgb(213, 52, 95);
+    animation-name: path;
+    animation-duration: 0.5s;
+    animation-iteration-count: 1;
+    border-radius: 25%;
+    height: 80%;
+    width: 80%;
+}
+
+.marked-f {
+    background-color: rgb(213, 52, 95);
+    border-radius: 25%;
+    height: 80%;
+    width: 80%;
+}
+
+@keyframes path {
+    from {
+        width: 50%;
+        height: 50%;
+        border-radius: 50%;
+    }
+    to {
+        width: 90%;
+        height: 90%;
+        border-radius: 15%;
+    }
+}
+
+.wall {
+    background-color: black;
+}
+
+.weight {
+    background-color: cyan;
+}
+
+/* ============================================================================ */
+/* Sorting Layout  */
+
+.sorter {
+    width: 90%;
+    margin: 0 auto;
+    min-width: 300px;
+}
+
+.bar-section {
+    margin-bottom: 1em;
+}
+
+.bar {
+    background-color: var(--main-blue);
+    margin: 1px;
+    height: 5px;
+}
+
+.sp-slider-sorter {
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+#speed-slider-sorter {
+    font-family: "Patua One";
+    color: #3d405b;
+}
+
+@media (min-width: 550px) {
+    .bar {
+        width: 5px;
+        display: inline-block;
+        background-color: #823038;
+    }
+
+    .bar-section {
+        margin: 3em 0 2em 0;
+    }
+}
+
+/* ============================================================================ */
+/* Life Layout  */
+
+.game-of-life {
+    width: 90%;
+    margin: 0 auto;
+    min-width: 300px;
+}
+
+.grid-life {
+    margin: 1em auto 2em auto;
+}
+
+.cell {
+    /* border: solid 1px black; */
+    width: 1em;
+    height: 1em;
+}
+
+.cell:hover {
+    background-color: #00afb9;
+}
+
+.dead {
+    background-color: white;
+}
+
+.alive {
+    background-color: black;
+}
+
+.first {
+    background-color: #00f488;
+}
+
+.second {
+    background-color: #00cd72;
+}
+
+.third {
+    background-color: #00a55c;
+}
+
+.fourth {
+    background-color: #007e46;
+}
+
+.fifth {
+    background-color: #005730;
+}
+
+.higher {
+    background-color: #00301b;
+}
+
+.sp-slider-life {
+    margin: 2em auto 0 auto;
+    max-width: 600px;
+}
+
+#speed-slider-life {
+    margin-bottom: 1em;
+    font-family: "Patua One", monospace;
+    color: #874f54;
+}
+
+.small-menu-sp-slider-life {
+    height: 300px;
+    margin: 0 auto;
+}
+
+#small-menu-speed-slider-life {
+    margin-bottom: 1em;
+    font-family: "Patua One", monospace;
+    color: #874f54;
+}
+
+/* ============================================================================ */
+/* Sudoku Layout */
+
+.sudoku-solver {
+    width: 90%;
+    margin: 0 auto;
+    min-width: 300px;
+}
+
+.sudoku-board {
+    border: solid 2px black;
+    margin: 0 auto 2em auto;
+}
+
+.sudoku-part {
+    border: solid 2px black;
+}
+
+.unsolvable-sudoku-board {
+    border: solid 2px red;
+    box-shadow: 0 0 0 4px red;
+    margin: 0 auto 2em auto;
+}
+
+.solved-sudoku-board {
+    border: solid 2px green;
+    box-shadow: 0 0 0 4px green;
+    margin: 0 auto 2em auto;
+}
+
+.cell-container {
+    width: calc(2.5vw + 20px);
+    height: calc(2.5vw + 20px);
+}
+
+.sudoku-cell {
+    width: 100%;
+    height: 100%;
+    border: solid 0.5px black;
+    color: black;
+    background-color: #f4fff8;
+    resize: none;
+    text-align: center;
+    font-family: "Patua One", sans-serif;
+    caret-color: black;
+}
+
+.sudoku-cell:hover {
+    background-color: rgba(244, 255, 248, 0.618);
+}
+
+.sudoku-cell:focus {
+    outline: none;
+}
+
+.opaque {
+    color: #f4fff8;
+}
+
+.correct {
+    background-color: #82b069;
+}
+
+.wrong {
+    background-color: #e11e48;
+}
+
+.wrong-opaque {
+    background-color: #e11e48;
+    color: #e11e48;
+}
