@@ -22,7 +22,6 @@ export const Sudoku = (props: any) => {
         createDisplayBoard()
     );
     const [solved, setSolved] = useState(false);
-    const [enterMode, setEnterMode] = useState(false);
     const [running, setRunning] = useState(false);
     const [solvable, setSolvable] = useState(true);
     const [reset, setReset] = useState(false);
@@ -73,7 +72,6 @@ export const Sudoku = (props: any) => {
             setBoard(createBoard());
             setDisplayBoard(createDisplayBoard());
             setSolved(false);
-            setEnterMode(false);
             setSolvable(true);
         } else {
             setBoard(prevBoard);
@@ -84,7 +82,6 @@ export const Sudoku = (props: any) => {
                 }
             }
             setSolved(false);
-            setEnterMode(false);
             setSolvable(true);
             setReset(true);
         }
@@ -121,7 +118,6 @@ export const Sudoku = (props: any) => {
             const errors: any = checkSolvable(tempBoard);
             if (errors.length === 0) {
                 setRunning(true);
-                setEnterMode(false);
                 solve(tempBoard, iterations);
                 setBoard(tempBoard);
                 if (props.animation) {
@@ -148,7 +144,6 @@ export const Sudoku = (props: any) => {
                     setDisplayBoard(newDisplayBoard);
                 }
             } else {
-                setEnterMode(false);
                 setSolvable(false);
                 for (const error of errors) {
                     if (error[0] === "row") {

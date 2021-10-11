@@ -1,5 +1,3 @@
-import { swap } from "../Functional/functions";
-
 export const insertionSort = (numbers: number[]) => {
     numbers = [...numbers];
     const reVal = [];

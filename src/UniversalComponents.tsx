@@ -1,6 +1,3 @@
-import { Children } from "react";
-import { isPropertySignature, JsxElement } from "typescript";
-
 interface ItemProps {
     name: string;
     setObject: React.Dispatch<React.SetStateAction<string>>;
