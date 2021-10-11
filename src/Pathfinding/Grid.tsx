@@ -231,7 +231,10 @@ export class Grid extends React.Component<GridProps, GridState> {
                 Math.floor(calculateCellsFromHeight(window.innerHeight) / 2),
                 2,
             ],
-            interDest: [2, calculateCellsFromWidth(window.innerWidth)],
+            interDest: [
+                2,
+                Math.floor(calculateCellsFromWidth(window.innerWidth) / 2),
+            ],
             finished: false,
         });
     };
