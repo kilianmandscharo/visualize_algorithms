@@ -33,7 +33,9 @@ export const Life = (props: any) => {
 
     return (
         <div className="game-of-life">
-            <h1 className="sections-header">The Game of Life</h1>
+            <h1 className="sections-header">
+                {width < breakPoint ? "Game of Life" : "The Game of Life"}
+            </h1>
             {width >= breakPoint && (
                 <div className="menu-section">
                     <BackButton handleClick={props.handleClick} />

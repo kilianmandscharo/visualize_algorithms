@@ -412,6 +412,13 @@ export class Grid extends React.Component<GridProps, GridState> {
                                             onMouseEnter={() =>
                                                 this.mouseEnter(rowIdx, colIdx)
                                             }
+                                            onTouchStart={() =>
+                                                this.mouseDown(rowIdx, colIdx)
+                                            }
+                                            onTouchEnd={() => this.mouseUp()}
+                                            onTouchMove={() =>
+                                                this.mouseEnter(rowIdx, colIdx)
+                                            }
                                         />
                                     </td>
                                 ))}

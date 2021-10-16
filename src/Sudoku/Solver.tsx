@@ -13,7 +13,9 @@ export const Solver = (props: any) => {
 
     return (
         <div>
-            <h1 className="sections-header">Sudoku-Solver</h1>
+            <h1 className="sections-header">
+                {width < breakPoint ? "Sudoku" : "Sudoku-Solver"}
+            </h1>
             {width >= breakPoint && (
                 <div className="menu-section">
                     <button
