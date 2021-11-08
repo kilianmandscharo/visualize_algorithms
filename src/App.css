@@ -132,6 +132,8 @@
     color: white;
     padding: 0.5em;
     max-height: 3em;
+    font-size: 12px;
+    text-align: center;
 }
 
 .small-menu-item-selected {
@@ -142,6 +144,7 @@
     color: var(--main-brown);
     padding: 0.5em;
     max-height: 3em;
+    font-size: 12px;
 }
 
 .button:disabled {

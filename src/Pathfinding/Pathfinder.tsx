@@ -5,6 +5,7 @@ import {
     BackButton,
     Item,
     MenuPart,
+    SmallBackButton,
     SmallMenu,
     SmallMenuItem,
 } from "../UniversalComponents";
@@ -150,12 +151,7 @@ export const Pathfinder = (props: any) => {
                                 ))}
                             </SmallMenu>
                             <SmallMenu name="Actions">
-                                <button
-                                    className="small-menu-item"
-                                    onClick={() => props.handleClick()}
-                                >
-                                    Back to menu
-                                </button>
+                                <SmallBackButton />
                                 <button
                                     className="small-menu-item"
                                     onClick={() => setInterDest(!interDest)}

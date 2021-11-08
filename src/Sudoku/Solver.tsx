@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Sudoku } from "./Sudoku";
 import "../App.css";
-import { BackButton, SmallMenu } from "../UniversalComponents";
+import { BackButton, SmallBackButton, SmallMenu } from "../UniversalComponents";
 import { useWindowSize } from "../Pathfinding/Functional/Functions";
 import { MenuIcon } from "../images/icons";
 import { breakPoint } from "../constants";
@@ -41,12 +41,7 @@ export const Solver = (props: any) => {
                             className="small-menu"
                         >
                             <SmallMenu name="Actions">
-                                <button
-                                    className="small-menu-item"
-                                    onClick={() => props.handleClick()}
-                                >
-                                    Back to menu
-                                </button>
+                                <SmallBackButton />
                                 <button
                                     className="small-menu-item"
                                     onClick={() => setAnimation(!animation)}

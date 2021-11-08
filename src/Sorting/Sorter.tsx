@@ -5,6 +5,7 @@ import {
     BackButton,
     Item,
     MenuPart,
+    SmallBackButton,
     SmallMenu,
     SmallMenuItem,
 } from "../UniversalComponents";
@@ -82,12 +83,7 @@ export const Sorter = (props: any) => {
                                 ))}
                             </SmallMenu>
                             <SmallMenu name="Actions">
-                                <button
-                                    className="small-menu-item"
-                                    onClick={() => props.handleClick()}
-                                >
-                                    Back to menu
-                                </button>
+                                <SmallBackButton />
                             </SmallMenu>
                         </div>
                     )}

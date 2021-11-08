@@ -104,3 +104,11 @@ export const BackButton = () => {
         </Link>
     );
 };
+
+export const SmallBackButton = () => {
+    return (
+        <Link to="/" style={{ textDecoration: "none" }}>
+            <div className="small-menu-item">Back to menu</div>
+        </Link>
+    );
+};

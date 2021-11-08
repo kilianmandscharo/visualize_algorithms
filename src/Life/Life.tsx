@@ -8,7 +8,7 @@ import { useState } from "react";
 import { breakPoint } from "../constants";
 import { MenuIcon } from "../images/icons";
 import { useWindowSize } from "../Pathfinding/Functional/Functions";
-import { BackButton, SmallMenu } from "../UniversalComponents";
+import { BackButton, SmallBackButton, SmallMenu } from "../UniversalComponents";
 import { Grid } from "./Grid";
 
 const theme = createTheme({
@@ -55,12 +55,7 @@ export const Life = (props: any) => {
                             className="small-menu"
                         >
                             <SmallMenu name="Actions">
-                                <button
-                                    className="small-menu-item"
-                                    onClick={() => props.handleClick()}
-                                >
-                                    Back to menu
-                                </button>
+                                <SmallBackButton />
                                 <div className="small-menu-sp-slider-life">
                                     <ThemeProvider theme={theme}>
                                         <Typography id="small-menu-speed-slider-life">
