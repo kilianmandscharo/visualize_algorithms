@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 interface ItemProps {
     name: string;
     setObject: React.Dispatch<React.SetStateAction<string>>;
@@ -101,8 +103,8 @@ interface BackButtonProps {
 
 export const BackButton = (props: BackButtonProps) => {
     return (
-        <button className="menu-button" onClick={() => props.handleClick()}>
-            Back to menu
-        </button>
+        <Link to="/" style={{ textDecoration: "none" }}>
+            <button className="menu-button">Back to menu</button>
+        </Link>
     );
 };

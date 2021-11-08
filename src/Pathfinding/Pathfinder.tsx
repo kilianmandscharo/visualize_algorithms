@@ -32,6 +32,7 @@ export const Pathfinder = (props: any) => {
             <h1 className="sections-header">Pathfinding</h1>
             {width >= breakPoint && (
                 <div className="menu-section">
+                    {/* Algorithm Menu */}
                     <MenuPart
                         menuName="path-a-menu"
                         menuActive={algoMenu}
