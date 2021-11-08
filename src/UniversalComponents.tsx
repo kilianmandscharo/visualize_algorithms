@@ -59,14 +59,14 @@ export const MenuPart = (props: MenuProps) => {
     );
 };
 
-interface SmallMenuItem {
+interface SmallMenuItemProps {
     name: string;
     setObject: React.Dispatch<React.SetStateAction<string>>;
     setMenu: React.Dispatch<React.SetStateAction<boolean>>;
     selected: boolean;
 }
 
-export const SmallMenuItem = (props: SmallMenuItem) => {
+export const SmallMenuItem = (props: SmallMenuItemProps) => {
     return (
         <button
             key={props.name}

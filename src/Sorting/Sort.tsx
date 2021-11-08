@@ -53,11 +53,13 @@ export class Sort extends React.Component<
                 numbers: this.shuffle(
                     this.makeArray(calculateBarsFromWidth(width))
                 ),
+                width: width,
             });
         }
         if (this.state.smallSize && width >= breakPoint) {
             this.setState({
                 smallSize: false,
+                width: width,
             });
         }
         if (!this.state.smallSize && width < breakPoint) {
@@ -66,6 +68,7 @@ export class Sort extends React.Component<
                 numbers: this.shuffle(
                     this.makeArray(calculateBarsFromHeight(window.innerHeight))
                 ),
+                width: width,
             });
         }
     };
