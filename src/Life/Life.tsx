@@ -38,7 +38,7 @@ export const Life = (props: any) => {
             </h1>
             {width >= breakPoint && (
                 <div className="menu-section">
-                    <BackButton handleClick={props.handleClick} />
+                    <BackButton />
                 </div>
             )}
             {width < breakPoint && (

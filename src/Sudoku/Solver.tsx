@@ -24,7 +24,7 @@ export const Solver = (props: any) => {
                     >
                         {animation ? "Animation: on" : "Animation: off"}
                     </button>
-                    <BackButton handleClick={props.handleClick} />
+                    <BackButton />
                 </div>
             )}
             {width < breakPoint && (

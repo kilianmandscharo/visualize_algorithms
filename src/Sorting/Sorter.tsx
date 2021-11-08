@@ -49,7 +49,7 @@ export const Sorter = (props: any) => {
                                 />
                             ))}
                     </MenuPart>
-                    <BackButton handleClick={props.handleClick} />
+                    <BackButton />
                 </div>
             )}
             {width < breakPoint && (

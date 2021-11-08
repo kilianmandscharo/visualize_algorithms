@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import { useState } from "react";
 import { Pathfinder } from "./Pathfinding/Pathfinder";
 import { Sorter } from "./Sorting/Sorter";
 import { Life } from "./Life/Life";

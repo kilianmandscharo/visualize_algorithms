@@ -97,11 +97,7 @@ export const SmallMenu = (props: SmallMenuProps) => {
     );
 };
 
-interface BackButtonProps {
-    handleClick: () => void;
-}
-
-export const BackButton = (props: BackButtonProps) => {
+export const BackButton = () => {
     return (
         <Link to="/" style={{ textDecoration: "none" }}>
             <button className="menu-button">Back to menu</button>

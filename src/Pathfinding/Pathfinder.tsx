@@ -101,7 +101,7 @@ export const Pathfinder = (props: any) => {
                                 : "Add destination"}
                         </button>
                     </div>
-                    <BackButton handleClick={props.handleClick} />
+                    <BackButton />
                 </div>
             )}
             {width < breakPoint && (
