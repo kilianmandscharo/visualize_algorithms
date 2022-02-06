@@ -21,6 +21,7 @@ export interface GridState {
     startDragging: boolean;
     destDragging: boolean;
     iDestDragging: boolean;
+    currentCell: [number, number];
 }
 
 export interface GridProps {

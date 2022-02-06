@@ -41,6 +41,7 @@ export class Grid extends React.Component<GridProps, GridState> {
             startDragging: false,
             destDragging: false,
             iDestDragging: false,
+            currentCell: [Infinity, Infinity],
         };
     }
 
@@ -265,8 +266,8 @@ export class Grid extends React.Component<GridProps, GridState> {
         }
     };
 
-    mouseDown = (e: any, row: number, col: number) => {
-        console.log("down");
+    pointerDown = (row: number, col: number) => {
+        this.setState({ currentCell: [row, col] });
         const start = this.state.start;
         const dest = this.state.dest;
         const inter = this.state.interDest;
@@ -295,8 +296,7 @@ export class Grid extends React.Component<GridProps, GridState> {
         }
     };
 
-    mouseUp = () => {
-        console.log("up");
+    pointerUp = () => {
         this.setState({
             dragging: false,
             startDragging: false,
@@ -305,7 +305,7 @@ export class Grid extends React.Component<GridProps, GridState> {
         });
     };
 
-    mouseEnter = (e: any, row: number, col: number) => {
+    pointerEnter = (row: number, col: number) => {
         const start = this.state.start;
         const dest = this.state.dest;
         const inter = this.state.interDest;
@@ -369,6 +369,28 @@ export class Grid extends React.Component<GridProps, GridState> {
         }
     };
 
+    handleTouchMove = (e: any) => {
+        const x = e.touches["0"].pageX;
+        const y = e.touches["0"].pageY;
+        const element = document.elementFromPoint(x, y);
+        if (element) {
+            const name = element.className.split(" ")[0];
+            if (Number.isNaN(parseInt(name.split("")[0]))) {
+                return;
+            }
+            const row = parseInt(name.split("-")[0]);
+            const col = parseInt(name.split("-")[1]);
+            if (
+                row === this.state.currentCell[0] &&
+                col === this.state.currentCell[1]
+            ) {
+                return;
+            }
+            this.setState({ currentCell: [row, col] });
+            this.pointerEnter(row, col);
+        }
+    };
+
     updateGrid = (currentRow: number, currentCol: number, obj: any) => {
         this.setState((prevState) => ({
             grid: prevState.grid.map((gridRow) =>
@@ -386,8 +408,9 @@ export class Grid extends React.Component<GridProps, GridState> {
             <div className="main-section">
                 <table
                     className="grid-pathfinder"
-                    onMouseUp={() => this.mouseUp()}
+                    onPointerUp={() => this.pointerUp()}
                     cellSpacing={0}
+                    onTouchMove={(e) => this.handleTouchMove(e)}
                 >
                     <tbody>
                         {this.state.grid.map((row, rowIdx) => (
@@ -407,52 +430,16 @@ export class Grid extends React.Component<GridProps, GridState> {
                                                 this.state.interDest,
                                                 this.props.interDest
                                             )}
-                                            // onTouchStart={(e) => this.touch(e)}
-                                            // onTouchEnd={() => this.mouseUp()}
-                                            // onTouchMove={(e) =>
-                                            //     this.mouseEnter(
-                                            //         e,
-                                            //         rowIdx,
-                                            //         colIdx
-                                            //     )
-                                            // }
-                                            // onMouseDown={(e) =>
-                                            //     this.mouseDown(
-                                            //         e,
-                                            //         rowIdx,
-                                            //         colIdx
-                                            //     )
-                                            // }
-                                            // onMouseUp={() => this.mouseUp()}
-                                            // onMouseEnter={(e) =>
-                                            //     this.mouseEnter(
-                                            //         e,
-                                            //         rowIdx,
-                                            //         colIdx
-                                            //     )
-                                            // }
-                                            // onTouchStart={(e) =>
-                                            //     this.mouseDown(
-                                            //         e,
-                                            //         rowIdx,
-                                            //         colIdx
-                                            //     )
-                                            // }
-                                            onPointerDown={(e) =>
-                                                this.mouseDown(
-                                                    e,
+                                            onPointerDown={() =>
+                                                this.pointerDown(rowIdx, colIdx)
+                                            }
+                                            onPointerEnter={() =>
+                                                this.pointerEnter(
                                                     rowIdx,
                                                     colIdx
                                                 )
                                             }
-                                            onPointerEnter={(e) =>
-                                                this.mouseEnter(
-                                                    e,
-                                                    rowIdx,
-                                                    colIdx
-                                                )
-                                            }
-                                            onPointerUp={() => this.mouseUp}
+                                            onPointerUp={() => this.pointerUp}
                                         />
                                     </td>
                                 ))}

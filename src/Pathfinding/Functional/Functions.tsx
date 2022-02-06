@@ -110,7 +110,7 @@ export const evaluateCellClasses = (
     interDest: number[],
     interDestActive: boolean
 ) => {
-    let reVal = "node";
+    let reVal = `${cell.row}-${cell.col} node`;
     const row = cell.row;
     const col = cell.col;
     if (row === dest[0] && col === dest[1]) {
