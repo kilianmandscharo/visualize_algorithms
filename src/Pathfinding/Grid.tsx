@@ -489,6 +489,6 @@ const calculateCellsFromHeight = (height: number) => {
 
 const calculateCellsFromWidth = (width: number) => {
     return width > maxWidth
-        ? Math.floor(maxWidth / 37)
-        : Math.floor(width / 37);
+        ? Math.floor(maxWidth / 34)
+        : Math.floor(width / 34);
 };

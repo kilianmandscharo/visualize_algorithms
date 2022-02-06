@@ -2,7 +2,7 @@ import { swap } from "../Functional/functions";
 
 export const quickSort = (numbers: number[]) => {
     numbers = [...numbers];
-    const reVal: any = [];
+    const reVals: any = [];
 
     const qSort = (
         left: number,
@@ -17,15 +17,15 @@ export const quickSort = (numbers: number[]) => {
         }
     };
 
-    qSort(0, numbers.length - 1, numbers, reVal);
-    return reVal;
+    qSort(0, numbers.length - 1, numbers, reVals);
+    return reVals;
 };
 
 const partition = (
     left: number,
     right: number,
     arr: number[],
-    reVal: number[][]
+    reVals: number[][]
 ): number => {
     let pivotIndex = left;
     let pivot = arr[right];
@@ -33,10 +33,10 @@ const partition = (
         if (arr[i] < pivot) {
             swap(i, pivotIndex, arr);
             pivotIndex++;
-            reVal.push([...arr]);
+            reVals.push([...arr]);
         }
     }
     swap(right, pivotIndex, arr);
-    reVal.push([...arr]);
+    reVals.push([...arr]);
     return pivotIndex;
 };

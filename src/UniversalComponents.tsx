@@ -112,3 +112,58 @@ export const SmallBackButton = () => {
         </Link>
     );
 };
+
+interface HelpMenuSectionProps {
+    name: string;
+    twoColumns: boolean;
+    children: any;
+}
+
+export const HelpMenuSection = (props: HelpMenuSectionProps) => {
+    return (
+        <section className="help-section">
+            <p className="help-section-header">{props.name}</p>
+            <div
+                className="help-section-content"
+                style={
+                    props.twoColumns ? { gridTemplateColumns: "1fr 1fr" } : {}
+                }
+            >
+                {props.children}
+            </div>
+        </section>
+    );
+};
+
+export const BackButtonSymbol = () => {
+    return (
+        <div className="back-button-symbol">
+            <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <line
+                    x1="0.646447"
+                    y1="18.7886"
+                    x2="18.3241"
+                    y2="1.11091"
+                    stroke="white"
+                    strokeOpacity="0.9"
+                />
+                <line
+                    x1="1.35355"
+                    y1="0.646447"
+                    x2="19.0312"
+                    y2="18.3241"
+                    stroke="white"
+                    strokeOpacity="0.9"
+                />
+            </svg>
+        </div>
+    );
+};
+
+export default BackButton;

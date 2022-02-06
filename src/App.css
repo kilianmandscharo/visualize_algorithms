@@ -17,7 +17,18 @@
     --main-brown: #b1624d;
     --main-blue: #3d405b;
     --light-blue: #55597e;
+    --main-white: rgba(255, 255, 255, 0.9);
     --max-width: 1000px;
+
+    --wall: black;
+    --weight: cyan;
+    --start: #9e1eac;
+    --destination: #1eac9e;
+    --intermediate-destination: orange;
+    --path: rgb(213, 52, 95);
+    --visited: rgb(81, 215, 134);
+    --visited-2: rgb(148, 81, 215);
+
     user-select: none;
 }
 
@@ -95,8 +106,8 @@
     background-color: transparent;
     border: none;
     position: absolute;
-    right: 5.5%;
-    top: 3.5%;
+    right: 4%;
+    top: 3.3%;
 }
 
 .small-menu {
@@ -172,6 +183,90 @@
     transition: transform 300ms ease;
     right: -5px;
     top: 42%;
+}
+
+.help-button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 3.3%;
+}
+
+.help {
+    background-color: var(--main-blue);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-width: 300px;
+    z-index: 100;
+    color: var(--main-white);
+}
+
+@media (min-width: 600px) {
+    .help {
+        top: 5%;
+        left: 5%;
+        right: 5%;
+        box-shadow: 3px 3px 10px 3px var(--main-blue);
+        padding: 1em;
+    }
+}
+
+.help-section {
+    display: grid;
+    justify-content: center;
+    width: 90%;
+    margin: 0 auto 0.5em auto;
+}
+
+.help-section-header {
+    font-family: "Patua One";
+    font-size: 1.3em;
+    color: var(--main-brown);
+    text-align: center;
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--main-brown);
+    padding-bottom: 0.3em;
+}
+
+.help-section-content {
+    display: grid;
+    margin: 0 0.5em;
+}
+
+.help-symbol-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.help-symbol-name {
+    font-family: "Quicksand", sans-serif;
+    font-size: 13px;
+}
+
+.help-symbol-node {
+    height: 30px;
+    width: 30px;
+    position: relative;
+    margin: 0 0.3em 0 1em;
+}
+
+.help-explanation-subheader {
+    font-family: "Quicksand", sans-serif;
+    font-size: 120%;
+    margin-bottom: 0;
+}
+
+.help-explanation-text {
+    font-family: "Quicksand", sans-serif;
+}
+
+.back-button-symbol {
+    position: absolute;
+    margin-top: 1em;
+    margin-left: 1em;
 }
 
 /* ============================================================================ */
@@ -491,7 +586,7 @@ body {
     color: #3d405b;
 }
 
-@media (min-width: 550px) {
+@media (min-width: 600px) {
     .bar {
         width: 5px;
         display: inline-block;
@@ -611,8 +706,8 @@ body {
 }
 
 .cell-container {
-    width: calc(2.5vw + 20px);
-    height: calc(2.5vw + 20px);
+    width: calc(2.5vw + 28px);
+    height: calc(2.5vw + 28px);
 }
 
 .sudoku-cell {

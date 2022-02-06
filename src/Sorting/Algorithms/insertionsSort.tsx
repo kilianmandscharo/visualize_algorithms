@@ -1,16 +1,18 @@
 export const insertionSort = (numbers: number[]) => {
     numbers = [...numbers];
-    const reVal = [];
+    const reVals = [];
 
     for (let i = 1; i < numbers.length; i++) {
         const index = getIndex(numbers, i);
+        if (index === i) {
+            continue;
+        }
         const num = numbers[i];
         numbers.splice(i, 1);
         numbers.splice(index, 0, num);
-        reVal.push([...numbers]);
+        reVals.push([...numbers]);
     }
-
-    return reVal;
+    return reVals;
 };
 
 const getIndex = (numbers: number[], numIdx: number) => {
