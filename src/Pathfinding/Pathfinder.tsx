@@ -4,6 +4,7 @@ import "../App.css";
 import {
     BackButton,
     BackButtonSymbol,
+    HelpMenu,
     HelpMenuSection,
     Item,
     MenuPart,
@@ -50,8 +51,7 @@ export const Pathfinder = (props: any) => {
                 <HelpIcon />
             </button>
             {helpActive && (
-                <div className="help" onClick={() => setHelpActive(false)}>
-                    <BackButtonSymbol />
+                <HelpMenu setMenuInactive={() => setHelpActive(false)}>
                     <HelpMenuSection name="How to play" twoColumns={false}>
                         <p className="help-explanation-text">
                             Click on and drag the start and destination nodes.
@@ -89,7 +89,7 @@ export const Pathfinder = (props: any) => {
                             </div>
                         ))}
                     </HelpMenuSection>
-                </div>
+                </HelpMenu>
             )}
             {width >= breakPoint && (
                 <div className="menu-section">

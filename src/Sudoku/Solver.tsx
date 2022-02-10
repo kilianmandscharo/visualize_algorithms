@@ -4,6 +4,7 @@ import "../App.css";
 import {
     BackButton,
     BackButtonSymbol,
+    HelpMenu,
     HelpMenuSection,
     SmallBackButton,
     SmallMenu,
@@ -28,8 +29,7 @@ export const Solver = (props: any) => {
                 <HelpIcon />
             </button>
             {helpActive && (
-                <div className="help" onClick={() => setHelpActive(false)}>
-                    <BackButtonSymbol />
+                <HelpMenu setMenuInactive={() => setHelpActive(false)}>
                     <HelpMenuSection name="Explanation" twoColumns={false}>
                         <p className="help-explanation-text">
                             A sudoku is a logical riddle, in which you have to
@@ -51,7 +51,7 @@ export const Solver = (props: any) => {
                             of a step by step animation.
                         </p>
                     </HelpMenuSection>
-                </div>
+                </HelpMenu>
             )}
             {width >= breakPoint && (
                 <div className="menu-section">

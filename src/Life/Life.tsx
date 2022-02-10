@@ -11,6 +11,7 @@ import { useWindowSize } from "../Pathfinding/Functional/Functions";
 import {
     BackButton,
     BackButtonSymbol,
+    HelpMenu,
     HelpMenuSection,
     SmallBackButton,
     SmallMenu,
@@ -48,8 +49,7 @@ export const Life = (props: any) => {
                 <HelpIcon />
             </button>
             {helpActive && (
-                <div className="help" onClick={() => setHelpActive(false)}>
-                    <BackButtonSymbol />
+                <HelpMenu setMenuInactive={() => setHelpActive(false)}>
                     <HelpMenuSection name="Explanation" twoColumns={false}>
                         <p className="help-explanation-text">
                             John Conway's Game of Life is a two-dimensional
@@ -87,7 +87,7 @@ export const Life = (props: any) => {
                             neighbor cells survives.
                         </p>
                     </HelpMenuSection>
-                </div>
+                </HelpMenu>
             )}
             {width >= breakPoint && (
                 <div className="menu-section">

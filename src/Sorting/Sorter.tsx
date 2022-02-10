@@ -4,6 +4,7 @@ import "../App.css";
 import {
     BackButton,
     BackButtonSymbol,
+    HelpMenu,
     HelpMenuSection,
     Item,
     MenuPart,
@@ -32,8 +33,7 @@ export const Sorter = (props: any) => {
                 <HelpIcon />
             </button>
             {helpActive && (
-                <div className="help" onClick={() => setHelpActive(false)}>
-                    <BackButtonSymbol />
+                <HelpMenu setMenuInactive={() => setHelpActive(false)}>
                     <HelpMenuSection name="How to play" twoColumns={false}>
                         <p className="help-explanation-text">
                             This part of the application demonstrates five
@@ -104,7 +104,7 @@ export const Sorter = (props: any) => {
                             sorted.
                         </p>
                     </HelpMenuSection>
-                </div>
+                </HelpMenu>
             )}
             {width >= breakPoint && (
                 <div className="menu-section">

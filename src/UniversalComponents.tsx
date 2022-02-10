@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 interface ItemProps {
@@ -118,6 +119,33 @@ interface HelpMenuSectionProps {
     twoColumns: boolean;
     children: any;
 }
+
+interface HelpMenuProps {
+    setMenuInactive: () => void;
+    children: any;
+}
+
+export const HelpMenu = (props: HelpMenuProps) => {
+    const [clicked, setClicked] = useState(false);
+
+    const handleClick = () => {
+        setClicked(true);
+        setTimeout(() => {
+            setClicked(false);
+            props.setMenuInactive();
+        }, 1000);
+    };
+
+    return (
+        <div
+            className={clicked ? "help-clicked" : "help"}
+            onClick={handleClick}
+        >
+            <BackButtonSymbol />
+            {props.children}
+        </div>
+    );
+};
 
 export const HelpMenuSection = (props: HelpMenuSectionProps) => {
     return (

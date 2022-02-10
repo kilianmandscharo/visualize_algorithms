@@ -201,10 +201,52 @@
     min-width: 300px;
     z-index: 100;
     color: var(--main-white);
+    animation-name: appear;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+.help-clicked {
+    background-color: var(--main-blue);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-width: 300px;
+    z-index: 100;
+    color: var(--main-white);
+    animation-name: disappear;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 @media (min-width: 600px) {
     .help {
+        top: 5%;
+        left: 5%;
+        right: 5%;
+        box-shadow: 3px 3px 10px 3px var(--main-blue);
+        padding: 1em;
+    }
+    .help-clicked {
         top: 5%;
         left: 5%;
         right: 5%;
