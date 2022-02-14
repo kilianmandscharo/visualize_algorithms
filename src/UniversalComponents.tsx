@@ -133,7 +133,7 @@ export const HelpMenu = (props: HelpMenuProps) => {
         setTimeout(() => {
             setClicked(false);
             props.setMenuInactive();
-        }, 1000);
+        }, 300);
     };
 
     return (
