@@ -1,6 +1,7 @@
 import React from "react";
 import "../App.css";
 import { breakPoint, maxWidth } from "../constants";
+import Cell from "./Cell";
 
 const smallWidth = 14;
 const smallHeight = 24;
@@ -213,35 +214,14 @@ export class Grid extends React.Component<
         }
     };
 
-    returnLifecycleColor = (lifecycle: number, row: number, col: number) => {
-        let reVal = `${row}-${col} cell`;
-        if (this.state.color) {
-            if (lifecycle === 0) reVal += " dead";
-            if (lifecycle === 1) reVal += " first";
-            if (lifecycle === 2) reVal += " second";
-            if (lifecycle === 3) reVal += " third";
-            if (lifecycle === 4) reVal += " fourth";
-            if (lifecycle === 5) reVal += " fifth";
-            if (lifecycle > 5) reVal += " higher";
-            return reVal;
-        } else {
-            if (lifecycle === 0) {
-                reVal += " dead";
-            } else {
-                reVal += " alive";
-            }
-            return reVal;
-        }
-    };
-
-    onMouseDown = (currentRow: number, currentCol: number) => {
+    onPointerDown = (currentRow: number, currentCol: number) => {
         if (!this.state.running) {
             this.setState({ dragging: true });
             this.changeGrid(currentRow, currentCol);
         }
     };
 
-    onMouseUp = () => {
+    onPointerUp = () => {
         this.setState({ dragging: false });
     };
 
@@ -289,7 +269,7 @@ export class Grid extends React.Component<
 
     render() {
         return (
-            <div onPointerUp={() => this.onMouseUp()}>
+            <div onPointerUp={() => this.onPointerUp()}>
                 <table
                     className="grid-life"
                     cellSpacing={0}
@@ -300,27 +280,17 @@ export class Grid extends React.Component<
                             <tr key={rowIdx} className="row">
                                 {row.map((cell, cellIdx) => (
                                     <td>
-                                        <div
-                                            key={cellIdx}
-                                            className={this.returnLifecycleColor(
-                                                cell,
-                                                rowIdx,
-                                                cellIdx
-                                            )}
-                                            onPointerDown={() =>
-                                                this.onMouseDown(
-                                                    rowIdx,
-                                                    cellIdx
-                                                )
+                                        <Cell
+                                            row={rowIdx}
+                                            col={cellIdx}
+                                            color={this.state.color}
+                                            cellValue={cell}
+                                            handleMouseEnter={this.onMouseEnter}
+                                            handlePointerDown={
+                                                this.onPointerDown
                                             }
-                                            onMouseEnter={() =>
-                                                this.onMouseEnter(
-                                                    rowIdx,
-                                                    cellIdx
-                                                )
-                                            }
-                                            onPointerUp={() => this.onMouseUp()}
-                                        ></div>
+                                            handlePointerUp={this.onPointerUp}
+                                        />
                                     </td>
                                 ))}
                             </tr>
