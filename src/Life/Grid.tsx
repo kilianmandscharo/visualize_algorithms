@@ -279,7 +279,7 @@ export class Grid extends React.Component<
                         {this.state.grid.map((row, rowIdx) => (
                             <tr key={rowIdx} className="row">
                                 {row.map((cell, cellIdx) => (
-                                    <td>
+                                    <td key={`td ${rowIdx} ${cellIdx}`}>
                                         <Cell
                                             row={rowIdx}
                                             col={cellIdx}

@@ -43,7 +43,7 @@ const Cell = ({
     };
     return (
         <div
-            key={col}
+            key={`${row} ${col}`}
             className={returnLifecycleColor(cellValue, row, col)}
             onPointerDown={() => handlePointerDown(row, col)}
             onMouseEnter={() => handleMouseEnter(row, col)}

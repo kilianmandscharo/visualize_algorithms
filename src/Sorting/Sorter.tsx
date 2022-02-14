@@ -155,8 +155,9 @@ export const Sorter = (props: any) => {
                                     "Selection Sort",
                                     "Insertion Sort",
                                     "Quick Sort",
-                                ].map((name) => (
+                                ].map((name, i) => (
                                     <SmallMenuItem
+                                        i={i}
                                         name={name}
                                         setObject={setAlgorithm}
                                         setMenu={setSmallMenuActive}

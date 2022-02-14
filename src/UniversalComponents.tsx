@@ -61,6 +61,7 @@ export const MenuPart = (props: MenuProps) => {
 };
 
 interface SmallMenuItemProps {
+    i: number;
     name: string;
     setObject: React.Dispatch<React.SetStateAction<string>>;
     setMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -70,7 +71,7 @@ interface SmallMenuItemProps {
 export const SmallMenuItem = (props: SmallMenuItemProps) => {
     return (
         <button
-            key={props.name}
+            key={`${props.i} ${props.name}`}
             className={
                 props.selected ? "small-menu-item-selected" : "small-menu-item"
             }

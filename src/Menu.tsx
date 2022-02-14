@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import pathLogo from "./images/path.png";
-import sortLogo from "./images/sort.png";
-import lifeLogo from "./images/life.png";
-import sudokuLogo from "./images/sudoku.png";
+// import pathLogo from "./images/path.png";
+// import sortLogo from "./images/sort.png";
+// import lifeLogo from "./images/life.png";
+// import sudokuLogo from "./images/sudoku.png";
 
 const Menu = () => {
     const [menuItem, setMenuItem] = useState(1);
@@ -30,7 +30,7 @@ const Menu = () => {
                                 Pathfinding Algorithms
                             </h2>
                             <img
-                                src={pathLogo}
+                                src="/path.png"
                                 className="image"
                                 alt="Pathfinding Logo"
                             />
@@ -53,7 +53,7 @@ const Menu = () => {
                                 Sorting Algorithms
                             </h2>
                             <img
-                                src={sortLogo}
+                                src="/sort.png"
                                 className="image"
                                 alt="Sorting Logo"
                             />
@@ -73,7 +73,7 @@ const Menu = () => {
                                 Conway's Game of Life
                             </h2>
                             <img
-                                src={lifeLogo}
+                                src="/life.png"
                                 className="image"
                                 alt="Game of life logo"
                             />
@@ -93,7 +93,7 @@ const Menu = () => {
                         <div className="selector">
                             <h2 className="selector-label">Sudoku Solver</h2>
                             <img
-                                src={sudokuLogo}
+                                src="/sudoku.png"
                                 className="image"
                                 alt="Sudoku logo"
                             />

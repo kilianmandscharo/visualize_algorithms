@@ -182,8 +182,9 @@ export const Pathfinder = (props: any) => {
                         >
                             <SmallMenu name="Algorithms">
                                 {["Dijkstra", "A*", "Greedy BFS"].map(
-                                    (name) => (
+                                    (name, i) => (
                                         <SmallMenuItem
+                                            i={i}
                                             name={name}
                                             setObject={setAlgorithm}
                                             setMenu={setSmallMenuActive}
@@ -193,8 +194,9 @@ export const Pathfinder = (props: any) => {
                                 )}
                             </SmallMenu>
                             <SmallMenu name="Obstacles">
-                                {["Wall", "Weight"].map((name) => (
+                                {["Wall", "Weight"].map((name, i) => (
                                     <SmallMenuItem
+                                        i={i}
                                         name={name}
                                         setObject={setObstacle}
                                         setMenu={setSmallMenuActive}
@@ -203,8 +205,9 @@ export const Pathfinder = (props: any) => {
                                 ))}
                             </SmallMenu>
                             <SmallMenu name="Mazes">
-                                {["Prim", "DFS"].map((name) => (
+                                {["Prim", "DFS"].map((name, i) => (
                                     <SmallMenuItem
+                                        i={i}
                                         name={name}
                                         setObject={setMaze}
                                         setMenu={setSmallMenuActive}
