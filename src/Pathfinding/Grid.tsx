@@ -375,6 +375,7 @@ export class Grid extends React.Component<GridProps, GridState> {
         const element = document.elementFromPoint(x, y);
         if (element) {
             const name = element.className.split(" ")[0];
+            console.log(name);
             if (Number.isNaN(parseInt(name.split("")[0]))) {
                 return;
             }

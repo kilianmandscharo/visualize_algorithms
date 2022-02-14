@@ -20,6 +20,7 @@ export class Grid extends React.Component<
         color: boolean;
         dragging: boolean;
         smallSize: boolean;
+        currentCell: [number, number];
     }
 > {
     constructor(props: any) {
@@ -41,6 +42,7 @@ export class Grid extends React.Component<
             color: false,
             dragging: false,
             smallSize: window.innerWidth < breakPoint ? true : false,
+            currentCell: [-1, -1],
         };
     }
 
@@ -211,26 +213,24 @@ export class Grid extends React.Component<
         }
     };
 
-    returnLifecycleColor = (lifecycle: number) => {
+    returnLifecycleColor = (lifecycle: number, row: number, col: number) => {
+        let reVal = `${row}-${col} cell`;
         if (this.state.color) {
-            switch (lifecycle) {
-                case 0:
-                    return "cell dead";
-                case 1:
-                    return "cell first";
-                case 2:
-                    return "cell second";
-                case 3:
-                    return "cell third";
-                case 4:
-                    return "cell fourth";
-                case 5:
-                    return "cell fifth";
-                default:
-                    return "cell higher";
-            }
+            if (lifecycle === 0) reVal += " dead";
+            if (lifecycle === 1) reVal += " first";
+            if (lifecycle === 2) reVal += " second";
+            if (lifecycle === 3) reVal += " third";
+            if (lifecycle === 4) reVal += " fourth";
+            if (lifecycle === 5) reVal += " fifth";
+            if (lifecycle > 5) reVal += " higher";
+            return reVal;
         } else {
-            return lifecycle === 0 ? "cell dead" : "cell alive";
+            if (lifecycle === 0) {
+                reVal += " dead";
+            } else {
+                reVal += " alive";
+            }
+            return reVal;
         }
     };
 
@@ -251,6 +251,28 @@ export class Grid extends React.Component<
         }
     };
 
+    handleTouchMove = (e: any) => {
+        const x = e.touches["0"].pageX;
+        const y = e.touches["0"].pageY;
+        const element = document.elementFromPoint(x, y);
+        if (element) {
+            const name = element.className.split(" ")[0];
+            if (Number.isNaN(parseInt(name.split("")[0]))) {
+                return;
+            }
+            const row = parseInt(name.split("-")[0]);
+            const col = parseInt(name.split("-")[1]);
+            if (
+                row === this.state.currentCell[0] &&
+                col === this.state.currentCell[1]
+            ) {
+                return;
+            }
+            this.setState({ currentCell: [row, col] });
+            this.onMouseEnter(row, col);
+        }
+    };
+
     changeGrid = (currentRow: number, currentCol: number) => {
         this.setState((prevState) => ({
             grid: prevState.grid.map((gridRow, rowIdx) =>
@@ -267,8 +289,12 @@ export class Grid extends React.Component<
 
     render() {
         return (
-            <div onMouseUp={() => this.onMouseUp()}>
-                <table className="grid-life" cellSpacing={0}>
+            <div onPointerUp={() => this.onMouseUp()}>
+                <table
+                    className="grid-life"
+                    cellSpacing={0}
+                    onTouchMove={this.handleTouchMove}
+                >
                     <tbody>
                         {this.state.grid.map((row, rowIdx) => (
                             <tr key={rowIdx} className="row">
@@ -277,9 +303,11 @@ export class Grid extends React.Component<
                                         <div
                                             key={cellIdx}
                                             className={this.returnLifecycleColor(
-                                                cell
+                                                cell,
+                                                rowIdx,
+                                                cellIdx
                                             )}
-                                            onMouseDown={() =>
+                                            onPointerDown={() =>
                                                 this.onMouseDown(
                                                     rowIdx,
                                                     cellIdx
@@ -291,7 +319,7 @@ export class Grid extends React.Component<
                                                     cellIdx
                                                 )
                                             }
-                                            onMouseUp={() => this.onMouseUp()}
+                                            onPointerUp={() => this.onMouseUp()}
                                         ></div>
                                     </td>
                                 ))}

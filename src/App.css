@@ -663,6 +663,9 @@ body {
 
 .grid-life {
     margin: 1em auto 2em auto;
+    touch-action: none;
+    user-select: none;
+    cursor: pointer;
 }
 
 .cell {
