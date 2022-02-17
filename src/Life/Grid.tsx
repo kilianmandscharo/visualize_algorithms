@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import { breakPoint, maxWidth } from "../constants";
+import { breakPoint, maxHeight, maxWidth } from "../constants";
 import Cell from "./Cell";
 
 const smallWidth = 14;
@@ -341,5 +341,7 @@ const calculateCellsFromWidth = (width: number) => {
 };
 
 const calculateCellsFromHeight = (height: number) => {
-    return Math.floor(height / 28);
+    return height < maxHeight
+        ? Math.floor(height / 28)
+        : Math.floor(maxHeight / 28);
 };

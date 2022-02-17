@@ -12,7 +12,7 @@ import {
 import { aAstar } from "./Algorithms/A-star";
 import { gbfs } from "./Algorithms/GBFS";
 import { dfsMaze } from "./Algorithms/DFS";
-import { maxWidth } from "../constants";
+import { maxHeight, maxWidth } from "../constants";
 
 export class Grid extends React.Component<GridProps, GridState> {
     constructor(props: any) {
@@ -485,7 +485,9 @@ export class Grid extends React.Component<GridProps, GridState> {
 }
 
 const calculateCellsFromHeight = (height: number) => {
-    return Math.floor(height / 38);
+    return height > maxHeight
+        ? Math.floor(maxHeight / 38)
+        : Math.floor(height / 38);
 };
 
 const calculateCellsFromWidth = (width: number) => {
