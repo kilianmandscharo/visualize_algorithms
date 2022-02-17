@@ -193,7 +193,7 @@ export const Sudoku = (props: any) => {
     };
 
     return (
-        <div className="sudoku-solver">
+        <div>
             <EnterBoard
                 changeHandler={changeBoard}
                 board={displayBoard}

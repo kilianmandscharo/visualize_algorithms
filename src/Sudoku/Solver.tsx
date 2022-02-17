@@ -20,7 +20,7 @@ export const Solver = (props: any) => {
     const [helpActive, setHelpActive] = useState(false);
 
     return (
-        <div>
+        <div className="sudoku-solver">
             <h1 className="sections-header">
                 {width < breakPoint ? "Sudoku" : "Sudoku-Solver"}
             </h1>

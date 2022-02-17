@@ -110,8 +110,8 @@
     background-color: transparent;
     border: none;
     position: absolute;
-    right: 4%;
-    top: 3.3%;
+    right: 2em;
+    top: 2.3em;
 }
 
 .small-menu {
@@ -195,7 +195,7 @@
     background-color: transparent;
     border: none;
     position: absolute;
-    top: 3.3%;
+    top: 2.3em;
 }
 
 .help {
@@ -448,6 +448,7 @@ body {
     width: 90%;
     margin: 0 auto;
     min-width: 300px;
+    max-height: 1000px;
 }
 
 .grid-pathfinder {
