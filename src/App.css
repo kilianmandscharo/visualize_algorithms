@@ -345,21 +345,85 @@ body {
 
 .app-selection {
     position: relative;
+    width: 85%;
+    margin: 0 auto;
 }
 
 .selector {
-    width: 85%;
+    position: absolute;
+    top: 0;
+    width: 100%;
     background-color: var(--main-blue);
     color: white;
-    border: solid 2px var(--main-blue);
+    border: solid 2px white;
     text-align: center;
     transition: all 255ms ease;
     padding: 1em 1em 2em 1em;
     margin: 0 auto;
+    z-index: 0;
+}
+
+.selector-to-left-primary {
+    animation: rotate-left-primary 0.5s 1 linear forwards;
+}
+
+.selector-to-left-secondary {
+    animation: rotate-left-secondary 0.5s 1 linear forwards;
+}
+
+.selector-to-right-primary {
+    animation: rotate-right-primary 0.5s 1 linear forwards;
+}
+
+.selector-to-right-secondary {
+    animation: rotate-right-secondary 0.5s 1 linear forwards;
+}
+
+@keyframes rotate-right-primary {
+    from {
+        transform: rotateY(0deg);
+        left: 0;
+    }
+    to {
+        left: 50%;
+        transform: rotateY(-90deg);
+    }
+}
+
+@keyframes rotate-right-secondary {
+    from {
+        left: -50%;
+        transform: rotateY(90deg);
+    }
+    to {
+        left: 0;
+        transform: rotateY(0deg);
+    }
+}
+
+@keyframes rotate-left-primary {
+    from {
+        right: 0;
+        transform: rotateY(0deg);
+    }
+    to {
+        right: 50%;
+        transform: rotateY(90deg);
+    }
+}
+
+@keyframes rotate-left-secondary {
+    from {
+        right: -50%;
+        transform: rotateY(-90deg);
+    }
+    to {
+        right: 0;
+        transform: rotateY(0deg);
+    }
 }
 
 .selector:hover {
-    border: solid 2px white;
     box-shadow: 0px 0px 0px 5px var(--main-brown);
 }
 
@@ -390,7 +454,7 @@ body {
     border-right: 30px solid var(--main-brown);
     position: absolute;
     transition: all 300ms ease;
-    left: 0.5em;
+    left: -8%;
     top: 10em;
 }
 
@@ -402,7 +466,7 @@ body {
     border-left: 30px solid var(--main-brown);
     position: absolute;
     transition: all 300ms ease;
-    right: 0.5em;
+    right: -8%;
     top: 10em;
 }
 
