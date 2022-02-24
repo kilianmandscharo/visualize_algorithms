@@ -64,8 +64,9 @@ const Menu = () => {
                                 Input an unfinished Sudoku into the Sudoku
                                 solver and watch it search for a correct
                                 solution. It does so by utilizing the
-                                backtracking algorithm, that is, it searches for
-                                a solution by trial-and-error.
+                                backtracking algorithm, that is, it searches
+                                through all possible number combinations until
+                                it finds a solution.
                             </p>
                         </div>
                     </Link>
@@ -82,12 +83,11 @@ const Menu = () => {
                                 alt="Game of life logo"
                             />
                             <p className="selector-description">
-                                John Conway's famous Game of Life (1970) – a
-                                cellular automaton – visualizes how a set of
-                                simple rules can lead to complex behavior. Input
-                                a certain state and observe how each
-                                evolutionary cycle transforms the current state
-                                of the cells.
+                                John Conway's famous Game of Life (1970)
+                                visualizes how a set of simple rules can lead to
+                                complex behavior. Input a certain state and
+                                observe how each evolutionary cycle transforms
+                                the current state of the cells.
                             </p>
                         </div>
                     </Link>
@@ -105,9 +105,10 @@ const Menu = () => {
                             />
                             <p className="selector-description">
                                 Choose between different sorting algorithms –
-                                from bubble sort to quick sort – to see how
-                                these different algorithms go about sorting an
-                                array of numbers, with adjustable sorting speed.
+                                from the very simple bubble sort to the
+                                recursive quick sort – to see how these
+                                different algorithms go about sorting an array
+                                of numbers, with adjustable sorting speed.
                             </p>
                         </div>
                     </Link>
@@ -124,12 +125,11 @@ const Menu = () => {
                                 alt="Pathfinding Logo"
                             />
                             <p className="selector-description">
-                                Visualize different algorithms that try to find
-                                a path between two points in a grid. Generate
-                                mazes or draw the walls yourself to see how the
-                                algorithms deal with obstacles and how they
-                                differ in their approach to get from start to
-                                destination.
+                                Visualize different pathfinding algorithms on a
+                                grid. Generate mazes or draw the walls yourself
+                                to see how the algorithms deal with obstacles
+                                and how they differ in their approach to get
+                                from start to destination.
                             </p>
                         </div>
                     </Link>

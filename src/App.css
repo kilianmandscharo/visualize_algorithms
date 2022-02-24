@@ -198,6 +198,12 @@
     top: 2.3em;
 }
 
+@media (min-width: 600px) {
+    .help-button {
+        top: 0.8em;
+    }
+}
+
 .help {
     background-color: var(--main-blue);
     position: absolute;
@@ -348,6 +354,12 @@ body {
     width: 85%;
     margin: 0 auto;
     margin-top: 2.5em;
+}
+
+@media (min-width: 600px) {
+    .app-selection {
+        margin-top: 4em;
+    }
 }
 
 .selector {
@@ -834,6 +846,13 @@ body {
     height: calc(2.5vw + 28px);
 }
 
+@media (min-width: 600px) {
+    .cell-container {
+        width: calc(1.5vw + 28px);
+        height: calc(1.5vw + 28px);
+    }
+}
+
 .sudoku-cell {
     width: 100%;
     height: 100%;
@@ -869,4 +888,19 @@ body {
 .wrong-opaque {
     background-color: #e11e48;
     color: #e11e48;
+}
+
+/* ============================================================================ */
+@media (min-width: 600px) {
+    .pathfinder,
+    .game-of-life,
+    .sorter,
+    .sudoku-solver {
+        position: relative;
+    }
+
+    .help {
+        width: 100%;
+        left: 0;
+    }
 }
