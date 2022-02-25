@@ -123,7 +123,7 @@ export class Sort extends React.Component<
                 this.setState(() => ({ numbers: iterations[i] }));
                 i++;
             }
-        }, 35 - this.state.speed);
+        }, 55 - this.state.speed);
     };
 
     onChangeSpeed = (event: any, newValue: number | number[]) => {
@@ -151,7 +151,10 @@ export class Sort extends React.Component<
                             className="bar"
                             style={
                                 this.state.smallSize
-                                    ? { width: cell * 35 }
+                                    ? {
+                                          width:
+                                              (cell * window.innerWidth) / 9.8,
+                                      }
                                     : { height: cell * 25 }
                             }
                         ></div>
@@ -162,7 +165,7 @@ export class Sort extends React.Component<
                         <Typography id="speed-slider-sorter">Speed</Typography>
                         <Slider
                             min={1}
-                            max={30}
+                            max={45}
                             defaultValue={20}
                             aria-labelledby="speed-slider-sort"
                             onChangeCommitted={this.onChangeSpeed}
