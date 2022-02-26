@@ -14,7 +14,7 @@ import {
 } from "../components/SmallMenu";
 import { breakPoint } from "../constants";
 import useWindowWidth from "../hooks/useWindowWidth";
-import { HelpIcon, MenuIcon } from "../images/icons";
+import { HelpIcon, MenuIcon } from "../components/icons";
 import { Grid } from "./Grid";
 
 const theme = createTheme({

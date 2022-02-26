@@ -2,7 +2,7 @@ import { Sort } from "./Sort";
 import { useState } from "react";
 import "../App.css";
 import useWindowWidth from "../hooks/useWindowWidth";
-import { HelpIcon, MenuIcon } from "../images/icons";
+import { HelpIcon, MenuIcon } from "../components/icons";
 import { breakPoint } from "../constants";
 import { HelpMenu, HelpMenuSection } from "../components/HelpMenu";
 import {

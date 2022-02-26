@@ -1,7 +1,7 @@
 import { Grid } from "./Grid";
 import { useState } from "react";
 import "../App.css";
-import { HelpIcon, MenuIcon } from "../images/icons";
+import { HelpIcon, MenuIcon } from "../components/icons";
 import { breakPoint } from "../constants";
 import useWindowWidth from "../hooks/useWindowWidth";
 import { HelpMenu, HelpMenuSection } from "../components/HelpMenu";
