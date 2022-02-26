@@ -1,21 +1,20 @@
 import { useState } from "react";
 import { Sudoku } from "./Sudoku";
 import "../App.css";
-import {
-    BackButton,
-    BackButtonSymbol,
-    HelpMenu,
-    HelpMenuSection,
-    SmallBackButton,
-    SmallMenu,
-} from "../UniversalComponents";
-import { useWindowSize } from "../Pathfinding/Functional/Functions";
 import { HelpIcon, MenuIcon } from "../images/icons";
 import { breakPoint } from "../constants";
+import useWindowWidth from "../hooks/useWindowWidth";
+import { HelpMenu, HelpMenuSection } from "../components/HelpMenu";
+import { BigBackButton } from "../components/BigMenu";
+import {
+    SmallBackButton,
+    SmallMenu,
+    SmallMenuSection,
+} from "../components/SmallMenu";
 
 export const Solver = (props: any) => {
     const [animation, setAnimation] = useState(true);
-    const [width, height] = useWindowSize();
+    const width = useWindowWidth();
     const [smallMenuActive, setSmallMenuActive] = useState(false);
     const [helpActive, setHelpActive] = useState(false);
 
@@ -29,7 +28,7 @@ export const Solver = (props: any) => {
                 <HelpIcon />
             </button>
             {helpActive && (
-                <HelpMenu setMenuInactive={() => setHelpActive(false)}>
+                <HelpMenu closeMenu={() => setHelpActive(false)}>
                     <HelpMenuSection name="Explanation" twoColumns={false}>
                         <p className="help-explanation-text">
                             A sudoku is a logical riddle, in which you have to
@@ -54,14 +53,14 @@ export const Solver = (props: any) => {
                 </HelpMenu>
             )}
             {width >= breakPoint && (
-                <div className="menu-section">
+                <div className="menu">
                     <button
                         className="menu-button a-button-sudoku"
                         onClick={() => setAnimation(!animation)}
                     >
                         {animation ? "Animation: on" : "Animation: off"}
                     </button>
-                    <BackButton />
+                    <BigBackButton />
                 </div>
             )}
             {width < breakPoint && (
@@ -73,11 +72,8 @@ export const Solver = (props: any) => {
                         <MenuIcon />
                     </button>
                     {smallMenuActive && (
-                        <div
-                            onClick={() => setSmallMenuActive(false)}
-                            className="small-menu"
-                        >
-                            <SmallMenu name="Actions">
+                        <SmallMenu closeMenu={() => setSmallMenuActive(false)}>
+                            <SmallMenuSection name="Actions">
                                 <SmallBackButton />
                                 <button
                                     className="small-menu-item"
@@ -87,8 +83,8 @@ export const Solver = (props: any) => {
                                         ? "Animation: on"
                                         : "Animation: off"}
                                 </button>
-                            </SmallMenu>
-                        </div>
+                            </SmallMenuSection>
+                        </SmallMenu>
                     )}
                 </div>
             )}

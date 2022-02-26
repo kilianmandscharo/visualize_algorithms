@@ -5,17 +5,16 @@ import {
     Slider,
 } from "@material-ui/core";
 import { useState } from "react";
-import { breakPoint } from "../constants";
-import { HelpIcon, MenuIcon } from "../images/icons";
-import { useWindowSize } from "../Pathfinding/Functional/Functions";
+import { BigBackButton } from "../components/BigMenu";
+import { HelpMenu, HelpMenuSection } from "../components/HelpMenu";
 import {
-    BackButton,
-    BackButtonSymbol,
-    HelpMenu,
-    HelpMenuSection,
     SmallBackButton,
     SmallMenu,
-} from "../UniversalComponents";
+    SmallMenuSection,
+} from "../components/SmallMenu";
+import { breakPoint } from "../constants";
+import useWindowWidth from "../hooks/useWindowWidth";
+import { HelpIcon, MenuIcon } from "../images/icons";
 import { Grid } from "./Grid";
 
 const theme = createTheme({
@@ -31,7 +30,7 @@ const theme = createTheme({
 
 export const Life = (props: any) => {
     const [speed, setSpeed] = useState(5);
-    const [width, height] = useWindowSize();
+    const width = useWindowWidth();
     const [smallMenuActive, setSmallMenuActive] = useState(false);
     const [helpActive, setHelpActive] = useState(false);
 
@@ -49,7 +48,7 @@ export const Life = (props: any) => {
                 <HelpIcon />
             </button>
             {helpActive && (
-                <HelpMenu setMenuInactive={() => setHelpActive(false)}>
+                <HelpMenu closeMenu={() => setHelpActive(false)}>
                     <HelpMenuSection name="Explanation" twoColumns={false}>
                         <p className="help-explanation-text">
                             John Conway's Game of Life is a two-dimensional
@@ -90,8 +89,8 @@ export const Life = (props: any) => {
                 </HelpMenu>
             )}
             {width >= breakPoint && (
-                <div className="menu-section">
-                    <BackButton />
+                <div className="menu">
+                    <BigBackButton />
                 </div>
             )}
             {width < breakPoint && (
@@ -103,11 +102,8 @@ export const Life = (props: any) => {
                         <MenuIcon />
                     </button>
                     {smallMenuActive && (
-                        <div
-                            onClick={() => setSmallMenuActive(false)}
-                            className="small-menu"
-                        >
-                            <SmallMenu name="Actions">
+                        <SmallMenu closeMenu={() => setSmallMenuActive(false)}>
+                            <SmallMenuSection name="Actions">
                                 <SmallBackButton />
                                 <div className="small-menu-sp-slider-life">
                                     <ThemeProvider theme={theme}>
@@ -124,8 +120,8 @@ export const Life = (props: any) => {
                                         />
                                     </ThemeProvider>
                                 </div>
-                            </SmallMenu>
-                        </div>
+                            </SmallMenuSection>
+                        </SmallMenu>
                     )}
                 </div>
             )}

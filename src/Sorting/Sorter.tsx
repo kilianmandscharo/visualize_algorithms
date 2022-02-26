@@ -1,20 +1,21 @@
 import { Sort } from "./Sort";
 import { useState } from "react";
 import "../App.css";
+import useWindowWidth from "../hooks/useWindowWidth";
+import { HelpIcon, MenuIcon } from "../images/icons";
+import { breakPoint } from "../constants";
+import { HelpMenu, HelpMenuSection } from "../components/HelpMenu";
 import {
-    BackButton,
-    BackButtonSymbol,
-    HelpMenu,
-    HelpMenuSection,
-    Item,
-    MenuPart,
+    BigBackButton,
+    BigMenuItem,
+    BigMenuSection,
+} from "../components/BigMenu";
+import {
     SmallBackButton,
     SmallMenu,
     SmallMenuItem,
-} from "../UniversalComponents";
-import { useWindowSize } from "../Pathfinding/Functional/Functions";
-import { HelpIcon, MenuIcon } from "../images/icons";
-import { breakPoint } from "../constants";
+    SmallMenuSection,
+} from "../components/SmallMenu";
 
 export const Sorter = (props: any) => {
     const [algorithm, setAlgorithm] = useState("Bubble Sort");
@@ -23,7 +24,7 @@ export const Sorter = (props: any) => {
     const [smallMenuActive, setSmallMenuActive] = useState(false);
     const [helpActive, setHelpActive] = useState(false);
 
-    const [width, height] = useWindowSize();
+    const width = useWindowWidth();
 
     return (
         <div className="sorter">
@@ -33,7 +34,7 @@ export const Sorter = (props: any) => {
                 <HelpIcon />
             </button>
             {helpActive && (
-                <HelpMenu setMenuInactive={() => setHelpActive(false)}>
+                <HelpMenu closeMenu={() => setHelpActive(false)}>
                     <HelpMenuSection name="How to play" twoColumns={false}>
                         <p className="help-explanation-text">
                             This part of the application demonstrates five
@@ -107,8 +108,8 @@ export const Sorter = (props: any) => {
                 </HelpMenu>
             )}
             {width >= breakPoint && (
-                <div className="menu-section">
-                    <MenuPart
+                <div className="menu">
+                    <BigMenuSection
                         menuName="sorter-a-menu"
                         menuActive={algoMenu}
                         setObjectMenu={setAlgoMenu}
@@ -124,15 +125,15 @@ export const Sorter = (props: any) => {
                                 "Insertion Sort",
                                 "Quick Sort",
                             ].map((name) => (
-                                <Item
+                                <BigMenuItem
                                     name={name}
                                     setObject={setAlgorithm}
                                     setObjectMenu={setAlgoMenu}
                                     setObjectSelected={setAlgoSelected}
                                 />
                             ))}
-                    </MenuPart>
-                    <BackButton />
+                    </BigMenuSection>
+                    <BigBackButton />
                 </div>
             )}
             {width < breakPoint && (
@@ -144,11 +145,8 @@ export const Sorter = (props: any) => {
                         <MenuIcon />
                     </button>
                     {smallMenuActive && (
-                        <div
-                            onClick={() => setSmallMenuActive(false)}
-                            className="small-menu"
-                        >
-                            <SmallMenu name="Algorithms">
+                        <SmallMenu closeMenu={() => setSmallMenuActive(false)}>
+                            <SmallMenuSection name="Algorithms">
                                 {[
                                     "Bubble Sort",
                                     "Gnome Sort",
@@ -164,11 +162,11 @@ export const Sorter = (props: any) => {
                                         selected={name === algorithm}
                                     />
                                 ))}
-                            </SmallMenu>
-                            <SmallMenu name="Actions">
+                            </SmallMenuSection>
+                            <SmallMenuSection name="Actions">
                                 <SmallBackButton />
-                            </SmallMenu>
-                        </div>
+                            </SmallMenuSection>
+                        </SmallMenu>
                     )}
                 </div>
             )}

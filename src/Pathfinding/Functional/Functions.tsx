@@ -1,4 +1,3 @@
-import { useLayoutEffect, useState } from "react";
 import { GridNode, DijkNode } from "./Interfaces";
 
 export const makeGrid = (height: number, width: number) => {
@@ -137,17 +136,4 @@ export const evaluateCellClasses = (
         reVal += " plain";
     }
     return reVal;
-};
-
-export const useWindowSize = () => {
-    const [size, setSize] = useState([0, 0]);
-    useLayoutEffect(() => {
-        const updateSize = () => {
-            setSize([window.innerWidth, window.innerHeight]);
-        };
-        window.addEventListener("resize", updateSize);
-        updateSize();
-        return () => window.removeEventListener("resize", updateSize);
-    }, []);
-    return size;
 };

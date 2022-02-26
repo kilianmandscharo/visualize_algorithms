@@ -1,20 +1,21 @@
 import { Grid } from "./Grid";
 import { useState } from "react";
 import "../App.css";
+import { HelpIcon, MenuIcon } from "../images/icons";
+import { breakPoint } from "../constants";
+import useWindowWidth from "../hooks/useWindowWidth";
+import { HelpMenu, HelpMenuSection } from "../components/HelpMenu";
 import {
-    BackButton,
-    BackButtonSymbol,
-    HelpMenu,
-    HelpMenuSection,
-    Item,
-    MenuPart,
     SmallBackButton,
     SmallMenu,
     SmallMenuItem,
-} from "../UniversalComponents";
-import { HelpIcon, MenuIcon } from "../images/icons";
-import { useWindowSize } from "./Functional/Functions";
-import { breakPoint } from "../constants";
+    SmallMenuSection,
+} from "../components/SmallMenu";
+import {
+    BigBackButton,
+    BigMenuItem,
+    BigMenuSection,
+} from "../components/BigMenu";
 
 const symbols = [
     { name: "Start", color: "#9e1eac", borderRadius: "25%" },
@@ -39,7 +40,7 @@ export const Pathfinder = (props: any) => {
     const [mazeSelected, setMazeSelected] = useState(false);
     const [interDest, setInterDest] = useState(false);
 
-    const [width, height] = useWindowSize();
+    const width = useWindowWidth();
     const [smallMenuActive, setSmallMenuActive] = useState(false);
     const [helpActive, setHelpActive] = useState(false);
 
@@ -51,7 +52,7 @@ export const Pathfinder = (props: any) => {
                 <HelpIcon />
             </button>
             {helpActive && (
-                <HelpMenu setMenuInactive={() => setHelpActive(false)}>
+                <HelpMenu closeMenu={() => setHelpActive(false)}>
                     <HelpMenuSection name="How to play" twoColumns={false}>
                         <p className="help-explanation-text">
                             Click on and drag the start and destination nodes.
@@ -92,9 +93,9 @@ export const Pathfinder = (props: any) => {
                 </HelpMenu>
             )}
             {width >= breakPoint && (
-                <div className="menu-section">
+                <div className="menu">
                     {/* Algorithm Menu */}
-                    <MenuPart
+                    <BigMenuSection
                         menuName="path-a-menu"
                         menuActive={algoMenu}
                         setObjectMenu={setAlgoMenu}
@@ -104,17 +105,17 @@ export const Pathfinder = (props: any) => {
                     >
                         {algoMenu &&
                             ["Dijkstra", "A*", "Greedy BFS"].map((name) => (
-                                <Item
+                                <BigMenuItem
                                     name={name}
                                     setObject={setAlgorithm}
                                     setObjectMenu={setAlgoMenu}
                                     setObjectSelected={setAlgoSelected}
                                 />
                             ))}
-                    </MenuPart>
+                    </BigMenuSection>
 
                     {/* Obstacle menu  */}
-                    <MenuPart
+                    <BigMenuSection
                         menuName="path-o-menu"
                         menuActive={obsMenu}
                         setObjectMenu={setObsMenu}
@@ -124,17 +125,17 @@ export const Pathfinder = (props: any) => {
                     >
                         {obsMenu &&
                             ["Wall", "Weight"].map((name) => (
-                                <Item
+                                <BigMenuItem
                                     name={name}
                                     setObject={setObstacle}
                                     setObjectMenu={setObsMenu}
                                     setObjectSelected={setObsSelected}
                                 />
                             ))}
-                    </MenuPart>
+                    </BigMenuSection>
 
                     {/* Maze menu  */}
-                    <MenuPart
+                    <BigMenuSection
                         menuName="path-m-menu"
                         menuActive={mazeMenu}
                         setObjectMenu={setMazeMenu}
@@ -144,14 +145,14 @@ export const Pathfinder = (props: any) => {
                     >
                         {mazeMenu &&
                             ["Prim", "DFS"].map((name) => (
-                                <Item
+                                <BigMenuItem
                                     name={name}
                                     setObject={setMaze}
                                     setObjectMenu={setMazeMenu}
                                     setObjectSelected={setMazeSelected}
                                 />
                             ))}
-                    </MenuPart>
+                    </BigMenuSection>
                     <div className="dest-adder">
                         <button
                             className="menu-button inter-dest-button"
@@ -162,7 +163,7 @@ export const Pathfinder = (props: any) => {
                                 : "Add destination"}
                         </button>
                     </div>
-                    <BackButton />
+                    <BigBackButton />
                 </div>
             )}
             {width < breakPoint && (
@@ -176,11 +177,8 @@ export const Pathfinder = (props: any) => {
 
                     {/* Small menu */}
                     {smallMenuActive && (
-                        <div
-                            onClick={() => setSmallMenuActive(false)}
-                            className="small-menu"
-                        >
-                            <SmallMenu name="Algorithms">
+                        <SmallMenu closeMenu={() => setSmallMenuActive(false)}>
+                            <SmallMenuSection name="Algorithms">
                                 {["Dijkstra", "A*", "Greedy BFS"].map(
                                     (name, i) => (
                                         <SmallMenuItem
@@ -192,8 +190,8 @@ export const Pathfinder = (props: any) => {
                                         />
                                     )
                                 )}
-                            </SmallMenu>
-                            <SmallMenu name="Obstacles">
+                            </SmallMenuSection>
+                            <SmallMenuSection name="Obstacles">
                                 {["Wall", "Weight"].map((name, i) => (
                                     <SmallMenuItem
                                         i={i}
@@ -203,8 +201,8 @@ export const Pathfinder = (props: any) => {
                                         selected={name === obstacle}
                                     />
                                 ))}
-                            </SmallMenu>
-                            <SmallMenu name="Mazes">
+                            </SmallMenuSection>
+                            <SmallMenuSection name="Mazes">
                                 {["Prim", "DFS"].map((name, i) => (
                                     <SmallMenuItem
                                         i={i}
@@ -214,8 +212,8 @@ export const Pathfinder = (props: any) => {
                                         selected={name === maze}
                                     />
                                 ))}
-                            </SmallMenu>
-                            <SmallMenu name="Actions">
+                            </SmallMenuSection>
+                            <SmallMenuSection name="Actions">
                                 <SmallBackButton />
                                 <button
                                     className="small-menu-item"
@@ -225,8 +223,8 @@ export const Pathfinder = (props: any) => {
                                         ? "Remove destination"
                                         : "Add destination"}
                                 </button>
-                            </SmallMenu>
-                        </div>
+                            </SmallMenuSection>
+                        </SmallMenu>
                     )}
                 </div>
             )}
