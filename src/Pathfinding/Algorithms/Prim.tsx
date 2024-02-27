@@ -2,7 +2,7 @@ import { makeGridNode } from "../Functional/Functions";
 import { GridNode } from "../Functional/Interfaces";
 import { getNeighbors, getWall } from "../Functional/Functions";
 
-export const prim = (inputGrid: GridNode[][], start: number[]) => {
+export const prim = (inputGrid: GridNode[][]) => {
     let unvisited: GridNode[] = [];
     const grid = [];
     for (let i = 0; i < inputGrid.length; i++) {

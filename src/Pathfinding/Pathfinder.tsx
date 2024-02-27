@@ -28,7 +28,7 @@ const symbols = [
     { name: "Visited as 2. dest.", color: "rgb(148, 81, 215)" },
 ];
 
-export const Pathfinder = (props: any) => {
+export const Pathfinder = () => {
     const [algorithm, setAlgorithm] = useState("Dijkstra");
     const [algoMenu, setAlgoMenu] = useState(false);
     const [algoSelected, setAlgoSelected] = useState(false);

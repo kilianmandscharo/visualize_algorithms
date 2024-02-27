@@ -1,7 +1,7 @@
 import { makeGridNode, getNeighbors, getWall } from "../Functional/Functions";
 import { GridNode } from "../Functional/Interfaces";
 
-export const dfsMaze = (inputGrid: GridNode[][], start: number[]) => {
+export const dfsMaze = (inputGrid: GridNode[][]) => {
     const grid = [];
     const width = inputGrid[0].length;
     const height = inputGrid.length;
