@@ -5,4 +5,4 @@ Namely pathfinding (Dijkstra, A*, Greedy BFS) and generating mazes (DFS, Prim), 
 
 The website is made to work responsively on mobile and desktop.
 
-Here is the [link to the website, hosted on netlify](https://visualize-algorithms.netlify.app).
+Here is the [link to the website, hosted on netlify](https://visualize-algorithms.pages.dev/).
